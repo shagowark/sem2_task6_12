@@ -41,7 +41,7 @@ public class Logic {
      * @param keys список ключей
      * @return
      */
-    public static List<String> shuffleKeys (List<String> keys){
+    public static void shuffleKeys (List<String> keys){
         Random random = new Random();
         for (int i = 0; i < keys.size(); i++){
             int index = random.nextInt(keys.size()-1);
@@ -51,8 +51,6 @@ public class Logic {
             keys.remove(index);
             keys.add(index, a);
         }
-
-        return keys;
     }
 
     /**
