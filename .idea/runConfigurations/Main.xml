@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Main" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="Logic" />
-    <module name="task6__12" />
+    <module name="sem2_task6_12-master" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

@@ -32,7 +32,7 @@ public class Frame extends JFrame {
 
         /**
          * Отрисовка графиков
-         */
+         **/
         buttonGraphs.addActionListener(e -> {
             LineChart.main();
         });
@@ -49,8 +49,8 @@ public class Frame extends JFrame {
                 List<String> keys = Logic.generateRandomKeys(length, size);
                 List<Integer> values = new ArrayList<>();
                 // генерирует случайные значения элементов
+                Random random = new Random();
                 for (int i = 0; i < keys.size(); i++) {
-                    Random random = new Random();
                     values.add(random.nextInt());
                 }
 
@@ -89,7 +89,7 @@ public class Frame extends JFrame {
                     testTreeMap.put(keys.get(i), values.get(i));
                 }
 
-                Logic.shuffleKeys(keys); // перемешиваю ключи, т.к. по условию требуется поиск случайных элементов
+                //Logic.shuffleKeys(keys); // перемешиваю ключи, т.к. по условию требуется поиск случайных элементов
                 Logic.clearStaticFields();
                 long hashTime = Logic.checkHashGet(testHashMap, keys);
                 long treeTime = Logic.checkTreeGet(testTreeMap, keys);
@@ -124,7 +124,7 @@ public class Frame extends JFrame {
                     testTreeMap.put(keys.get(i), values.get(i));
                 }
 
-                Logic.shuffleKeys(keys);
+                //Logic.shuffleKeys(keys);
                 Logic.clearStaticFields();
                 long hashTime = Logic.checkHashRemove(testHashMap, keys);
                 long treeTime = Logic.checkTreeRemove(testTreeMap, keys);
@@ -148,8 +148,8 @@ public class Frame extends JFrame {
                 int size = Integer.parseInt(textFieldSize.getText());
                 List<String> keys = Logic.generateRandomKeys(length, size);
                 List<Integer> values = new ArrayList<>();
+                Random random = new Random();
                 for (int i = 0; i < keys.size(); i++) {
-                    Random random = new Random();
                     values.add(random.nextInt());
                 }
 
@@ -215,7 +215,7 @@ public class Frame extends JFrame {
                     testTreeMap.put(keys.get(i), values.get(i));
                 }
 
-                Logic.shuffleKeys(keys);
+                //Logic.shuffleKeys(keys);
                 Logic.clearStaticFields();
                 long hashTime = Logic.checkMyHashGet(testHashMap, keys);
                 long treeTime = Logic.checkMyTreeGet(testTreeMap, keys);
@@ -250,7 +250,7 @@ public class Frame extends JFrame {
                     testTreeMap.put(keys.get(i), values.get(i));
                 }
 
-                Logic.shuffleKeys(keys);
+                //Logic.shuffleKeys(keys);
                 Logic.clearStaticFields();
                 long hashTime = Logic.checkMyHashRemove(testHashMap, keys);
                 long treeTime = Logic.checkMyTreeRemove(testTreeMap, keys);

@@ -37,37 +37,17 @@ public class Logic {
     }
 
     /**
-     * Перемешивает список ключей, чтобы получить случайный порядок элементов
-     * @param keys список ключей
-     * @return
-     */
-    public static void shuffleKeys (List<String> keys){
-        Random random = new Random();
-        for (int i = 0; i < keys.size(); i++){
-            int index = random.nextInt(keys.size()-1);
-            String a = keys.get(i);
-            keys.remove(i);
-            keys.add(i, keys.get(index));
-            keys.remove(index);
-            keys.add(index, a);
-        }
-    }
-
-    /**
      * Создает случайную строку (ключ) фиксированной длины
      * @param targetStringLength длина строки
      * @return
      */
     public static String generateRandomStringWithFixedLength(int targetStringLength) {
 
-        int leftLimit = 97; // 'a'
-        int rightLimit = 122; // 'z'
+        String letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         Random random = new Random();
         StringBuilder buffer = new StringBuilder(targetStringLength);
         for (int i = 0; i < targetStringLength; i++) {
-            int randomLimitedInt = leftLimit + (int)
-                    (random.nextFloat() * (rightLimit - leftLimit + 1));
-            buffer.append((char) randomLimitedInt);
+            buffer.append(letters.charAt(random.nextInt(letters.length())));
         }
 
         return buffer.toString();
@@ -93,7 +73,8 @@ public class Logic {
 
         long overallTime = 0; //время обработки всех ключей
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             Integer value = values.get(i);
             /* в условии просят учитывать только время работы со словарем,
             поэтому в startTime получаю время перед операцией put, в endTime - после,
@@ -116,7 +97,8 @@ public class Logic {
     public static long checkHashGet(HashMap<String, Integer> testMap, List<String> keys){
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             long startTime = System.currentTimeMillis();
             testMap.get(key);
             long endTime = System.currentTimeMillis();
@@ -132,7 +114,8 @@ public class Logic {
    public static long checkHashRemove(HashMap<String, Integer> testMap, List<String> keys){
        long overallTime = 0;
        for (int i = 0; i < keys.size(); i++){
-           String key = keys.get(i);
+           Random random = new Random();
+           String key = keys.get(random.nextInt(keys.size()));
            long startTime = System.currentTimeMillis();
            testMap.remove(key);
            long endTime = System.currentTimeMillis();
@@ -150,7 +133,8 @@ public class Logic {
 
        long overallTime = 0;
        for (int i = 0; i < keys.size(); i++){
-           String key = keys.get(i);
+           Random random = new Random();
+           String key = keys.get(random.nextInt(keys.size()));
            Integer value = values.get(i);
            long startTime = System.currentTimeMillis();
            testMap.put(key, value);
@@ -162,10 +146,9 @@ public class Logic {
            }
        }
 
-       shuffleKeys(keys);
-
        for (int i = 0; i < keys.size(); i++){
-           String key = keys.get(i);
+           Random random = new Random();
+           String key = keys.get(random.nextInt(keys.size()));
            long startTime = System.currentTimeMillis();
            testMap.remove(key);
            long endTime = System.currentTimeMillis();
@@ -184,7 +167,8 @@ public class Logic {
         TreeMap<String, Integer> testMap = new TreeMap<>();
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             Integer value = values.get(i);
             long startTime = System.currentTimeMillis();
             testMap.put(key, value);
@@ -202,7 +186,8 @@ public class Logic {
     public static long checkTreeGet(TreeMap<String, Integer> testMap, List<String> keys){
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             long startTime = System.currentTimeMillis();
             testMap.get(key);
             long endTime = System.currentTimeMillis();
@@ -218,7 +203,8 @@ public class Logic {
     public static long checkTreeRemove(TreeMap<String, Integer> testMap, List<String> keys){
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             long startTime = System.currentTimeMillis();
             testMap.remove(key);
             long endTime = System.currentTimeMillis();
@@ -236,7 +222,8 @@ public class Logic {
 
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             Integer value = values.get(i);
             long startTime = System.currentTimeMillis();
             testMap.put(key, value);
@@ -249,7 +236,8 @@ public class Logic {
         }
 
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             long startTime = System.currentTimeMillis();
             testMap.remove(key);
             long endTime = System.currentTimeMillis();
@@ -269,7 +257,8 @@ public class Logic {
 
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             Integer value = values.get(i);
             long startTime = System.currentTimeMillis();
             testMap.put(key, value);
@@ -286,7 +275,8 @@ public class Logic {
     public static long checkMyHashGet(SimpleHashMap<String, Integer> testMap, List<String> keys){
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             long startTime = System.currentTimeMillis();
             testMap.get(key);
             long endTime = System.currentTimeMillis();
@@ -302,7 +292,8 @@ public class Logic {
     public static long checkMyHashRemove(SimpleHashMap<String, Integer> testMap, List<String> keys){
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             long startTime = System.currentTimeMillis();
             testMap.remove(key);
             long endTime = System.currentTimeMillis();
@@ -320,7 +311,8 @@ public class Logic {
 
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             Integer value = values.get(i);
             long startTime = System.currentTimeMillis();
             testMap.put(key, value);
@@ -332,10 +324,9 @@ public class Logic {
             }
         }
 
-        shuffleKeys(keys);
-
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             long startTime = System.currentTimeMillis();
             testMap.remove(key);
             long endTime = System.currentTimeMillis();
@@ -354,7 +345,8 @@ public class Logic {
         AVLTreeMap<String, Integer> testMap = new AVLTreeMap<>();
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             Integer value = values.get(i);
             long startTime = System.currentTimeMillis();
             testMap.put(key, value);
@@ -372,7 +364,8 @@ public class Logic {
     public static long checkMyTreeGet(AVLTreeMap<String, Integer> testMap, List<String> keys){
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             long startTime = System.currentTimeMillis();
             testMap.get(key);
             long endTime = System.currentTimeMillis();
@@ -388,7 +381,8 @@ public class Logic {
     public static long checkMyTreeRemove(AVLTreeMap<String, Integer> testMap, List<String> keys){
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             long startTime = System.currentTimeMillis();
             testMap.remove(key);
             long endTime = System.currentTimeMillis();
@@ -406,7 +400,8 @@ public class Logic {
 
         long overallTime = 0;
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             Integer value = values.get(i);
             long startTime = System.currentTimeMillis();
             testMap.put(key, value);
@@ -419,7 +414,8 @@ public class Logic {
         }
 
         for (int i = 0; i < keys.size(); i++){
-            String key = keys.get(i);
+            Random random = new Random();
+            String key = keys.get(random.nextInt(keys.size()));
             long startTime = System.currentTimeMillis();
             testMap.remove(key);
             long endTime = System.currentTimeMillis();
